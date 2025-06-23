@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>ADR Report</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          font-size: 11pt;
+          margin: 40px;
+        }
+
+        .header {
+          display: table;
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .header-cell {
+          display: table-cell;
+          vertical-align: middle;
+        }
+
+        .logo {
+          width: 100px;
+        }
+
+        .title {
+          text-align: center;
+          font-size: 20pt;
+          font-weight: bold;
+        }
+
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 10px;
+        }
+
+        th, td {
+          border: 1px solid #ccc;
+          padding: 6px;
+          text-align: left;
+        }
+
+        th {
+          background-color: #f2f2f2;
+        }
+
+        .footer {
+          margin-top: 40px;
+          font-size: 10pt;
+          text-align: right;
+          color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-cell">
+        <img src="/images/aig-logo.png" alt="AIG Logo" class="logo"/>
+    </div>
+    <div class="header-cell title">
+        Architecture Decision Report
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Component ID</th>
+        <th>Impact Area</th>
+        <th>Author</th>
+        <th>Created At</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{rows}}
+    </tbody>
+</table>
+
+<div class="footer">
+    Exported on: {{timestamp}}
+</div>
+
+</body>
+</html>

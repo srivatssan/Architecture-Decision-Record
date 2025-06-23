@@ -1,0 +1,81 @@
+/* Typography */
+body, html {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f7fa;
+  color: #1c1e21;
+}
+
+.aig-title {
+  font-size: 1.75rem;
+  color: #002D62; /* AIG Navy */
+  font-weight: bold;
+}
+
+.aig-user-meta {
+  font-weight: 500;
+  color: #2e3c45;
+}
+
+/* Container */
+.aig-container {
+  padding: 2rem;
+  background-color: #ffffff;
+}
+
+/* Buttons */
+.aig-btn-primary {
+  background-color: #005EB8;
+  border-color: #005EB8;
+  color: #ffffff;
+}
+
+.aig-btn-primary:hover {
+  background-color: #003F7F;
+  border-color: #003F7F;
+}
+
+.aig-btn-secondary {
+  background-color: #E5F1FB;
+  border: 1px solid #A9C6DF;
+  color: #003F7F;
+}
+
+.aig-btn-danger {
+  background-color: #C8102E;
+  color: #fff;
+  border: none;
+}
+
+.aig-btn-danger:hover {
+  background-color: #8B0A1D;
+}
+
+/* Table */
+.aig-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.aig-table thead {
+  background-color: #002D62;
+  color: #ffffff;
+}
+
+.aig-table th,
+.aig-table td {
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+}
+
+.aig-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Alerts */
+.aig-alert-warning {
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 4px;
+}

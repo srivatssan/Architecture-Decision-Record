@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" x-data="loginApp()" x-init="init()">
+<head>
+  <meta charset="UTF-8">
+  <title>AIG ADR Login</title>
+
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+  <!-- Bootstrap Base -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+  <!-- Crypto CSS Definition -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <!-- AIG Style Override -->
+  <link rel="stylesheet" href="aig-bootstrap-override.css">
+</head>
+<body class="container d-flex align-items-center justify-content-center min-vh-100 aig-background">
+
+<div class="card shadow-lg p-5" style="max-width: 480px; width: 100%;">
+
+  <!-- AIG Logo Section -->
+  <div class="text-center mb-4">
+    <img src="images/aig-logo.png" alt="AIG Logo" style="width: 120px; height: auto;" class="mb-3">
+    <h2 class="fw-semibold">AIG ADR Login</h2>
+    <p class="text-muted">Sign in with your registered account</p>
+  </div>
+
+  <!-- Login Form -->
+  <form @submit.prevent="login">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" id="email" class="form-control form-control-lg" x-model="email" required>
+    </div>
+
+    <div class="mb-4">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" id="password" class="form-control form-control-lg" x-model="password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 btn-lg shadow-sm">Login</button>
+  </form>
+
+  <!-- Error Message -->
+  <div x-show="errorMessage" class="alert alert-danger mt-4" x-text="errorMessage"></div>
+</div>
+
+<script>
+  function loginApp() {
+    return {
+        email: '',
+        password: '',
+        errorMsg: '',
+        login() {
+            this.errorMsg = '';
+
+            // Encrypt password using AES
+            const secretKey = "adrAppKey1234567";   // Must match backend key
+            const key = CryptoJS.enc.Utf8.parse(secretKey);
+            const encryptedPassword = CryptoJS.AES.encrypt(this.password, key, {
+              mode: CryptoJS.mode.ECB,
+              padding: CryptoJS.pad.Pkcs7
+            }).toString();
+
+            fetch('/api/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: this.email, password: encryptedPassword })
+            })
+            .then(res => {
+                if (!res.ok) return res.text().then(text => { throw new Error(text); });
+                return res.json();
+            })
+            .then(data => {
+                localStorage.setItem("userEmail", data.email);
+                localStorage.setItem("userName", `${data.firstName} ${data.lastName}`);
+                localStorage.setItem("userRole", data.role); // <-- Store role
+                window.location.href = "dashboard.html";
+            })
+            .catch(err => {
+                this.errorMsg = err.message || "Login failed.";
+            });
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

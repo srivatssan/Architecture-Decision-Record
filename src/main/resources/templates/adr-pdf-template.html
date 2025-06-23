@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 2cm 2cm 2cm 2cm;
+    }
+    header {
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+    header img {
+      width: 120px;
+    }
+    header h1 {
+      font-size: 20pt;
+      margin: 10px 0 0;
+    }
+    .content dt {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .content dd {
+      margin: 0 0 10px 0;
+    }
+    footer {
+      position: running(footer);
+      font-size: 9pt;
+      color: gray;
+      border-top: 1px solid #ccc;
+      margin-top: 20px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+<header style="border-bottom: 1px solid #ccc; margin-bottom: 20px;">
+  <table width="100%" style="border-collapse: collapse;">
+    <tr>
+      <td style="width: 120px;">
+        <img src="/images/aig-logo.png" alt="AIG Logo" style="width: 100px;"/>
+      </td>
+      <td style="text-align: center;">
+        <h1 style="font-size: 20pt; margin: 0;">Architecture Decision Record</h1>
+      </td>
+    </tr>
+  </table>
+</header>
+
+<main class="content">
+  <dl>
+    <dt><strong>Title</strong></dt><dd>{{title}}</dd>
+    <dt>Status</dt><dd>{{status}}</dd>
+    <dt>Component ID</dt><dd>{{componentId}}</dd>
+    <dt>Impact Area</dt><dd>{{impactArea}}</dd>
+    <dt>Author</dt><dd>{{authorEmail}}</dd>
+    <dt>Created At</dt><dd>{{createdAt}}</dd>
+    <dt>Tags</dt><dd>{{tags}}</dd>
+    <dt>Linked Stories</dt><dd>{{linkedStories}}</dd>
+    <dt>Context</dt><dd>{{context}}</dd>
+    <dt>Decision</dt><dd>{{decision}}</dd>
+    <dt>Consequences</dt><dd>{{consequences}}</dd>
+    <dt>Disposition Status</dt><dd>{{dispositionStatus}}</dd>
+    <dt>Disposition Target Date</dt><dd>{{dispositionTargetDate}}</dd>
+    <dt>Architecture Intake ID</dt><dd>{{architectureIntakeId}}</dd>
+    <dt>Loop Link</dt><dd>{{loopLink}}</dd>
+    <dt>Proof of Acknowledgement</dt><dd>{{proofLink}}</dd>
+  </dl>
+</main>
+
+<footer style="position: fixed; bottom: 0; width: 100%; text-align: center; font-size: 0.75em;">
+  <span>ADR Report | Generated at {{timestamp}}</span>
+  <span>© Gen AI Tech Architecture under AIG</span>
+</footer>
+
+</body>
+</html>
